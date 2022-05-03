@@ -1,5 +1,7 @@
 # Github Finder app
 
+Deployed on vercel : https://kiril-github-finder.vercel.app/
+
 ## Motivation
 
 I have built this project as a part of REACT-Front to Back course
@@ -47,13 +49,18 @@ Runs the app on the local server http://localhost:3000.<br>
 Web
 
 <p align="center">  
-      <img alt="home" src="/public/screenshots/home.PNG" width="90%">
-      <img alt="about" src="/public/screenshots/about.PNG" width="90%">
+      <img alt="home" src="/public/assest/screenshots/home.PNG" width="45%">
+      <img alt="user1" src="/public/assest/screenshots/user1.PNG" width="45%">
+      <img alt="user2" src="/public/assest/screenshots/user2.PNG" width="45%">
+      <img alt="about" src="/public/assest/screenshots/about.PNG" width="45%">
       
 </p>
 Mobile
 <p align="center">  
-      <img alt="mobile-home" src="/public/screenshots/home-mobile.PNG" width="40%">
-      <img alt="abut-mobile" src="/public/screenshots/about-mobile.PNG" width="40%">
+      <img alt="home-mobile" src="/public/assest/screenshots/homemobile.PNG" width="20%">
+      <img alt="user1-mobile" src="/public/assest/screenshots/user1mobile.PNG" width="20%">
+      <img alt="user2-mobile" src="/public/assest/screenshots/user2mobile.PNG" width="20%">
+      <img alt="about-mobile" src="/public/assest/screenshots/aboutmobile.PNG" width="20%">
+      
    
 </p>
