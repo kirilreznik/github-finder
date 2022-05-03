@@ -1,13 +1,15 @@
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import GithubContext from "../context/github/GithubContext";
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
 import Spinner from "../components/layout/Spinner";
-import GithubContext from "../context/github/GithubContext";
+import RepoList from "../components/layout/RepoList";
 
 const User = () => {
   const { login } = useParams();
-  const { getUser, user, isLoading } = useContext(GithubContext);
+  const { getUser, user, isLoading, getUserRepos, repos } =
+    useContext(GithubContext);
   const {
     name,
     type,
@@ -26,6 +28,8 @@ const User = () => {
 
   useEffect(() => {
     getUser(login);
+    getUserRepos(login);
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isLoading ? (
@@ -147,6 +151,7 @@ const User = () => {
             </div>
           </div>
         </div>
+        <RepoList repos={repos} />
       </div>
     </>
   );
