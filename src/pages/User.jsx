@@ -5,7 +5,7 @@ import GithubContext from "../context/github/GithubContext";
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
 import Spinner from "../components/layout/Spinner";
 import RepoList from "../components/layout/RepoList";
-import { getUser, getRepos } from "../context/github/GithubActions";
+import { getUserData } from "../context/github/GithubActions";
 
 const User = () => {
   const { login } = useParams();
@@ -26,17 +26,17 @@ const User = () => {
     hireable,
   } = user;
 
-  const setUserData = async () => {
-    dispatch({ type: "SET_LOADING" });
-    const user = await getUser(login);
-    const repos = await getRepos(login);
-    dispatch({ type: "SET_USER_DATA", payload: { user, repos } });
-  };
-
   useEffect(() => {
+    const setUserData = async () => {
+      dispatch({ type: "SET_LOADING" });
+      const data = await getUserData(login);
+      dispatch({
+        type: "SET_USER_DATA",
+        payload: data,
+      });
+    };
     setUserData();
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch, login]);
 
   return isLoading ? (
     <Spinner />
