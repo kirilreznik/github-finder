@@ -5,11 +5,11 @@ import GithubContext from "../context/github/GithubContext";
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
 import Spinner from "../components/layout/Spinner";
 import RepoList from "../components/layout/RepoList";
+import { getUser, getRepos } from "../context/github/GithubActions";
 
 const User = () => {
   const { login } = useParams();
-  const { getUser, user, isLoading, getUserRepos, repos } =
-    useContext(GithubContext);
+  const { user, isLoading, repos, dispatch } = useContext(GithubContext);
   const {
     name,
     type,
@@ -26,9 +26,15 @@ const User = () => {
     hireable,
   } = user;
 
+  const setUserData = async () => {
+    dispatch({ type: "SET_LOADING" });
+    const user = await getUser(login);
+    const repos = await getRepos(login);
+    dispatch({ type: "SET_USER_DATA", payload: { user, repos } });
+  };
+
   useEffect(() => {
-    getUser(login);
-    getUserRepos(login);
+    setUserData();
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
